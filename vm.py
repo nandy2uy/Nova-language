@@ -1,8 +1,6 @@
-# vm.py
 
-# Add this class at the top of vm.py
 class Frame:
-    """Represents a single function call frame."""
+    #single function call frame
     def __init__(self, return_ip):
         self.return_ip = return_ip
         self.variables = {}
@@ -23,7 +21,7 @@ class VM:
             self.ip += 1
 
             if opcode == 'PUSH': self.stack.append(arg)
-            # --- FIX: Expect word-based opcodes ---
+            
             elif opcode == 'ADD': right, left = self.stack.pop(), self.stack.pop(); self.stack.append(left + right)
             elif opcode == 'SUB': right, left = self.stack.pop(), self.stack.pop(); self.stack.append(left - right)
             elif opcode == 'MUL': right, left = self.stack.pop(), self.stack.pop(); self.stack.append(left * right)

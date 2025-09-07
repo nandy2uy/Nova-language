@@ -1,37 +1,35 @@
-# interpreter.py
 from tree import NumberNode, StringNode, BoolNode, VarAccessNode, VarAssignNode, BinOpNode, PrintNode, StatementsNode, IfNode
 
 class SymbolTable:
-    """A symbol table to store variable values."""
+    #table to store variable values
     def __init__(self):
         self.symbols = {}
 
     def get(self, name):
-        """Get a value from the symbol table."""
+        #Get a value from the symbol table
         value = self.symbols.get(name, None)
         if value is None:
             raise NameError(f"Variable '{name}' is not defined.")
         return value
 
     def set(self, name, value):
-        """Set a value in the symbol table."""
+        #Set a value in the symbol table
         self.symbols[name] = value
 
 class Interpreter:
-    """
-    The interpreter, responsible for executing the code from the AST.
-    """
+  #  The interpreter, responsible for executing the code from the AST.
+    
     def __init__(self):
         self.symbol_table = SymbolTable()
 
     def visit(self, node):
-        """The main visit method, which dispatches to other visit methods."""
+        #The main visit method, which dispatches to other visit methods
         method_name = f'visit_{type(node).__name__}'
         method = getattr(self, method_name, self.no_visit_method)
         return method(node)
 
     def no_visit_method(self, node):
-        """Called if no specific visit method is found for a node type."""
+        #Called if no specific visit method is found for a node type
         raise Exception(f'No visit_{type(node).__name__} method defined')
 
     def visit_NumberNode(self, node):

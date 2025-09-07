@@ -1,10 +1,9 @@
-# compiler.py
 #from tree import NumberNode, StringNode, BoolNode, VarAccessNode, VarAssignNode, BinOpNode, PrintNode, StatementsNode, IfNode
 from tree import NumberNode, StringNode, BoolNode, VarAccessNode, VarAssignNode, BinOpNode, PrintNode, StatementsNode, IfNode, WhileNode
 
-"""
-    The compiler, responsible for translating the AST into bytecode.
-"""
+
+#    The compiler, responsible for translating the AST into bytecode.
+
 class Compiler:
     def __init__(self):
         self.bytecode = []
@@ -30,7 +29,7 @@ class Compiler:
     def visit_BinOpNode(self, node):
         self.compile(node.left_node)
         self.compile(node.right_node)
-        # --- FIX: Use word-based opcodes ---
+        # FIX: Use word-based opcodes
         if node.op == '+': self.bytecode.append(('ADD', None))
         elif node.op == '-': self.bytecode.append(('SUB', None))
         elif node.op == '*': self.bytecode.append(('MUL', None))

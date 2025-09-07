@@ -1,4 +1,3 @@
-# parser.py
 from lexer import TT_INT, TT_KEYWORD, TT_IDENTIFIER, TT_OPERATOR, TT_STRING, TT_LBRACE, TT_RBRACE, TT_LPAREN, TT_RPAREN, TT_COMMA, TT_EOF
 from tree import NumberNode, StringNode, BoolNode, VarAccessNode, VarAssignNode, BinOpNode, PrintNode, StatementsNode, IfNode, WhileNode, FunctionDefNode, FunctionCallNode, ReturnNode
 

@@ -1,4 +1,3 @@
-# main.py
 from lexer import Lexer
 from parser import Parser
 from compiler import Compiler
@@ -21,15 +20,15 @@ def main():
     print("--- Source Code ---")
     print(source_code)
 
-    # 1. Lexer -> Produces tokens
+    # Lexer -> Produces tokens
     lexer = Lexer(source_code)
     tokens = lexer.tokenize()
     
-    # 2. Parser -> Produces AST
+    # Parser -> Produces AST
     parser = Parser(tokens)
     ast = parser.parse()
     
-    # 3. Compiler -> Produces Bytecode and function table
+    # Compiler -> Produces Bytecode and function table
     compiler = Compiler()
     compiler.compile(ast)
     bytecode = compiler.bytecode
@@ -40,7 +39,7 @@ def main():
     for i, instruction in enumerate(bytecode):
         print(f"{i:04d} {instruction[0]:<15} {instruction[1] if instruction[1] is not None else ''}")
 
-    # 4. VM -> Executes Bytecode and produces output
+    # VM -> Executes Bytecode and produces output
     print("\n--- Program Output ---")
     # Pass the 'functions' dictionary to the VM
     vm = VM(bytecode, functions)

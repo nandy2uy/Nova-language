@@ -1,7 +1,7 @@
 # lexer.py
 
 class Token:
-    """A simple class to represent a token."""
+    #A simple class to represent a token
     def __init__(self, type, value):
         self.type = type
         self.value = value
@@ -30,7 +30,7 @@ KEYWORDS = [
 ]
 
 class Lexer:
-    """The lexer, responsible for breaking code into tokens."""
+    #The lexer, responsible for breaking code into tokens
     def __init__(self, text):
         self.text = text
         self.pos = 0
@@ -86,14 +86,13 @@ class Lexer:
             if self.current_char in ['=', '+', '-', '*', '/', '<', '>']:
                 op = self.current_char; self.advance(); return Token(TT_OPERATOR, op)
             
-            # --- THIS IS THE CORRECTED PART ---
+            
             if self.current_char == '{': self.advance(); return Token(TT_LBRACE, '{')
             if self.current_char == '}': self.advance(); return Token(TT_RBRACE, '}')
             if self.current_char == '(': self.advance(); return Token(TT_LPAREN, '(')
             if self.current_char == ')': self.advance(); return Token(TT_RPAREN, ')')
             if self.current_char == ',': self.advance(); return Token(TT_COMMA, ',')
-            # ------------------------------------
-
+            
             raise Exception(f"Invalid character: '{self.current_char}'")
 
         return Token(TT_EOF, None)

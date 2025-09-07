@@ -1,5 +1,5 @@
 class NumberNode:
-    """Represents an integer number in the AST."""
+    #Represents an integer number in the AST
     def __init__(self, token):
         self.token = token
         self.value = token.value
@@ -8,7 +8,7 @@ class NumberNode:
         return f"NumberNode({self.value})"
 
 class StringNode:
-    """Represents a string literal in the AST."""
+    #Represents a string literal in the AST
     def __init__(self, token):
         self.token = token
         self.value = token.value
@@ -17,7 +17,7 @@ class StringNode:
         return f'StringNode("{self.value}")'
         
 class BoolNode:
-    """Represents a boolean literal in the AST."""
+    """Represents a boolean literal i"""
     def __init__(self, token):
         self.token = token
         self.value = token.value == 'true'
@@ -35,7 +35,7 @@ class VarAccessNode:
         return f"VarAccessNode({self.name})"
 
 class VarAssignNode:
-    """Represents a variable declaration/assignment (e.g., 'let x = 5')."""
+    #variable declaraton
     def __init__(self, name_token, value_node):
         self.name_token = name_token
         self.value_node = value_node
@@ -45,7 +45,7 @@ class VarAssignNode:
         return f"VarAssignNode({self.name}, {self.value_node})"
 
 class BinOpNode:
-    """Represents a binary operation (e.g., 5 + 3)."""
+    # a binary operation
     def __init__(self, left_node, op_token, right_node):
         self.left_node = left_node
         self.op_token = op_token
@@ -56,7 +56,7 @@ class BinOpNode:
         return f"({self.left_node} {self.op} {self.right_node})"
 
 class PrintNode:
-    """Represents a print statement."""
+    # a print statement
     def __init__(self, value_node):
         self.value_node = value_node
 
@@ -64,7 +64,7 @@ class PrintNode:
         return f"PrintNode({self.value_node})"
 
 class StatementsNode:
-    """Represents a block of statements, like in an if/else body."""
+    #a block of statements, like in an if/else body."""
     def __init__(self):
         self.statements = []
 
@@ -72,7 +72,7 @@ class StatementsNode:
         return f"StatementsNode([\n  " + ",\n  ".join(map(str, self.statements)) + "\n])"
 
 class IfNode:
-    """Represents an if-else statement."""
+    # if-else 
     def __init__(self, condition_node, if_body_node, else_body_node=None):
         self.condition_node = condition_node
         self.if_body_node = if_body_node
@@ -83,7 +83,7 @@ class IfNode:
         return f"IfNode(if={self.condition_node}, then={self.if_body_node}{else_str})"
 
 class WhileNode:
-    """Represents a while loop."""
+    #a while loop
     def __init__(self, condition_node, body_node):
         self.condition_node = condition_node
         self.body_node = body_node
